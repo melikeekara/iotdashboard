@@ -1,0 +1,13 @@
+@echo off
+echo Applying migrations...
+python manage.py makemigrations device_monitor
+python manage.py migrate
+
+echo Starting device update command...
+python manage.py update_devices
+
+echo Starting Django server...
+start cmd /k python manage.py runserver
+
+echo Starting device monitoring...
+start cmd /k python manage.py monitor_devices
